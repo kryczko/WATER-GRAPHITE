@@ -39,8 +39,6 @@ cout << "Please enter the water inputfile: ";
 cin >> infile1;
 cout << "Please enter the graphite-water inputfile: ";
 cin >> infile2;
-cout << "Number of different atoms: ";
-cin >> num;
 cout << "Please enter the z lattice constant: ";
 cin >> zlattice;
 cout << "\n##### CODE RUNNING, PLEASE WAIT A MOMENT #####\n\n";
@@ -134,7 +132,7 @@ while(!inputfile1.eof())
 	{
 		noa2 = atoi (words1.c_str());
 		noa3 = noa1 + noa2;
-		realstart1 = count1 + noa3*3 + 3;
+		realstart1 = count1 + noa3*3 + 2;
 	}
         if (count1 >= realstart1)
         {
@@ -204,7 +202,7 @@ while(!inputfile2.eof())
 	{
 		noa6 = atoi (words2.c_str());
 		noa7 = noa4 + noa5 + noa6;
-		realstart2 = count2 + noa7*3 + 4;
+		realstart2 = count2 + noa7*3 + 2;
 	}
         if (count2 >= realstart2)
         {
@@ -215,7 +213,7 @@ while(!inputfile2.eof())
         }
         count2 ++;
 }   
-    
+cout << "read input";    
 int nx2 = good2[0], ny2 = good2[1], nz2 = good2[2];
  
 good2.erase(good2.begin());
@@ -250,7 +248,7 @@ double increment = 0;
 for (int i = 0; i < nz2; i ++)
 {
         increment += zlattice/nz2;
-        outputfile << increment  << "\t" <<  esp0[i] - esp1[i] - esp2[i] << endl;
+        outputfile << increment  << "\t" <<  esp2[i] - esp0[i] - esp1[i]  << endl;
 }
 
 cout << "The vacuum energy is " << max(esp2, nz2) << " eV." << endl;
